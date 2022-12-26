@@ -35,7 +35,6 @@ fn main() {
             }
         }    
     }
-    
 }
 
 fn parse_string(input: &str) -> Result<u32, ParseIntError> {
