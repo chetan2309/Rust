@@ -1,5 +1,6 @@
 use std::io;
 use std::cmp::Ordering;
+use std::num::ParseIntError;
 use rand::Rng;
 
 fn main() {
@@ -7,7 +8,7 @@ fn main() {
 
     let secret_num = rand::thread_rng().gen_range(1..=100);
     loop {
-        println!("Please input your guess!");
+        println!("Please input your guess");
 
         let mut guess = String::new();
 
@@ -15,9 +16,12 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read a line");
 
-        let guess: u32 = match guess.trim().parse() {
+        let guess: u32 = match parse_string(&guess) {
             Ok(num) => num,
-            Err(_) => continue,
+            Err(e) => {
+                println!("Error: {}", e);
+                0
+            }
         };
         
         println!("You guessed: {guess}");
@@ -32,4 +36,8 @@ fn main() {
         }    
     }
     
+}
+
+fn parse_string(input: &str) -> Result<u32, ParseIntError> {
+    input.trim().parse()
 }
