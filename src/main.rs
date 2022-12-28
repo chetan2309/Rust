@@ -2,6 +2,7 @@ mod parse_string;
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
+mod tests;
 
 fn main() {
     println!("Guess the number!");
