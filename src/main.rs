@@ -1,6 +1,6 @@
+mod parse_string;
 use std::io;
 use std::cmp::Ordering;
-use std::num::ParseIntError;
 use rand::Rng;
 
 fn main() {
@@ -16,7 +16,7 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read a line");
 
-        let guess: u32 = match parse_string(&guess) {
+        let guess: u32 = match parse_string::parse_string(&guess) {
             Ok(num) => num,
             Err(e) => {
                 println!("Error: {}", e);
@@ -35,8 +35,4 @@ fn main() {
             }
         }    
     }
-}
-
-fn parse_string(input: &str) -> Result<u32, ParseIntError> {
-    input.trim().parse()
 }
