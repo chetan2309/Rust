@@ -1,4 +1,5 @@
 mod parse_string;
+mod rust_borrowings;
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
@@ -16,6 +17,8 @@ fn main() {
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read a line");
+        
+        println!("The length of the string is {length}", length=rust_borrowings::calculate_length(&guess));
 
         let guess: u32 = match parse_string::parse_string(&guess) {
             Ok(num) => num,
