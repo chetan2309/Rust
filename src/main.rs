@@ -1,7 +1,9 @@
-mod parse_string;
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
+
+use crate::parse_string::ParseString;
+mod parse_string;
 mod tests;
 
 fn main() {
@@ -17,7 +19,7 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read a line");
 
-        let guess: u32 = match parse_string::parse_string(&guess) {
+        let guess: u32 = match u32::parse_string(&guess) {
             Ok(num) => num,
             Err(e) => {
                 println!("Error: {}", e);
