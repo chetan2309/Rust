@@ -25,4 +25,11 @@ pub mod parse_strings {
             s.trim().parse()
         }
     }
+
+    impl ParseString for i32 {
+        type Output = i32;
+        fn parse_string(s: &str) -> Result<Self::Output, ParseIntError> {
+            s.trim().parse()
+        }
+    }
 }
