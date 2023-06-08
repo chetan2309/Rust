@@ -24,4 +24,11 @@ mod tests {
         let expected_output = Ok(-123);
         assert_eq!(actual_output, expected_output);
     }
+
+    #[test]
+    fn test_parse_string_to_float_number() {
+        let input = "1.0";
+        let actual_output = i32::parse_string(input);
+        assert!(actual_output.is_err());
+    }
 }
